@@ -1,0 +1,131 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+button:hover,
+.button {
+  cursor: pointer;
+}
+.auth-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.auth-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  flex-direction: column;
+  width: 50%;
+  height: 300px;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.auth-form > header {
+  display: flex;
+  align-items: center;
+}
+
+.auth-form > header > i:first-child {
+  font-size: 40px;
+  color: #4c9be5;
+  margin-right: 5px;
+  margin-bottom: 20px;
+  animation: iconOpacity 3s linear infinite;
+}
+
+@keyframes iconOpacity {
+  0% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
+
+.auth-form > header > span {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.auth-form > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form > form > input {
+  margin: 10px;
+  border-radius: 20px;
+  border: 2px solid black;
+  padding: 10px;
+  outline: none;
+}
+
+.auth-form > form > input[type="submit"] {
+  background-color: #4c9be5;
+  color: white;
+  font-weight: 800;
+}
+
+.auth-form-buttons > button {
+  border-radius: 20px;
+  margin: 10px;
+  margin-top: 40px;
+  border: 2px solid black;
+  padding: 10px;
+  font-weight: 800;
+}
+
+.auth-form-buttons > button:first-child {
+  color: white;
+  background-image: linear-gradient(
+    -120deg,
+    #4285f4,
+    #34a853,
+    #fbbc05,
+    #ea4335
+  );
+  background-size: 400% 400%;
+  animation: gradientEffect 5s linear infinite;
+  box-shadow: 0px 2px;
+}
+
+.auth-form-buttons > button:nth-child(2) {
+  color: white;
+  background: linear-gradient(
+    45deg,
+    #4078c0,
+    #6e5494,
+    #bd2c00,
+    #c9510c,
+    #6cc644,
+    #fafafa
+  );
+  background-size: 400% 400%;
+  animation: gradientEffect 5s linear infinite;
+  box-shadow: 0px 2px;
+}
+
+.auth-form-buttons > button > span {
+  margin-right: 5px;
+}
+
+@keyframes gradientEffect {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

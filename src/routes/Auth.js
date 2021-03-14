@@ -42,36 +42,48 @@ export default () => {
     }
   };
   return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <input
-          name="email"
-          type="text"
-          placeholder="Email"
-          required
-          onChange={onChange}
-          value={email}
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          required
-          onChange={onChange}
-          value={password}
-        />
-        <input
-          type="submit"
-          value={newAccount ? "Create Account" : "Sign in"}
-        />
-      </form>
-      <span onClick={toggleUserMethod}>
-        {newAccount ? "Sign in" : "Create Account"}
-      </span>
-      {error ? <span>{error}</span> : null}
-      <div>
-        <button>Continue with Google</button>
-        <button>Continue with Github</button>
+    <div className="auth-form-container">
+      <div className="auth-form">
+        <header>
+          <i class="fab fa-twitter"></i>
+        </header>
+        <form onSubmit={onSubmit}>
+          <input
+            name="email"
+            type="text"
+            placeholder="Email"
+            required
+            onChange={onChange}
+            value={email}
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            required
+            onChange={onChange}
+            value={password}
+          />
+          <input
+            className="button"
+            type="submit"
+            value={newAccount ? "Create Account" : "Sign in"}
+          />
+        </form>
+        <span className="button" onClick={toggleUserMethod}>
+          {newAccount ? "Sign in" : "Create Account"}
+        </span>
+        {error ? <span>{error}</span> : null}
+        <div className="auth-form-buttons">
+          <button>
+            <span>Continue with</span>
+            <i class="fab fa-google"></i>
+          </button>
+          <button>
+            <span>Continue with</span>
+            <i class="fab fa-github"></i>
+          </button>
+        </div>
       </div>
     </div>
   );
