@@ -4,6 +4,7 @@ export default () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newAccount, setNewAccount] = useState(true);
+  const [error, setError] = useState("");
 
   const onChange = (e) => {
     const {
@@ -14,6 +15,10 @@ export default () => {
     } else if (name === "password") {
       setPassword(value);
     }
+  };
+
+  const toggleUserMethod = () => {
+    setNewAccount((prev) => !prev);
   };
 
   const onSubmit = async (e) => {
@@ -33,7 +38,7 @@ export default () => {
       }
       console.log(data);
     } catch (e) {
-      console.log(e);
+      setError(e.message);
     }
   };
   return (
@@ -55,8 +60,15 @@ export default () => {
           onChange={onChange}
           value={password}
         />
-        <input type="submit" value={newAccount ? "Create Account" : "Log In"} />
+        <input
+          type="submit"
+          value={newAccount ? "Create Account" : "Sign in"}
+        />
       </form>
+      <span onClick={toggleUserMethod}>
+        {newAccount ? "Sign in" : "Create Account"}
+      </span>
+      {error ? <span>{error}</span> : null}
       <div>
         <button>Continue with Google</button>
         <button>Continue with Github</button>
