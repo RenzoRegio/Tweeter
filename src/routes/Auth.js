@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { firebaseAuthorization } from "../firebase";
+import { firebaseAuthorization, firebaseProviders } from "../firebase";
 export default () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,11 +41,26 @@ export default () => {
       setError(e.message);
     }
   };
+
+  const socialLogIn = async (e) => {
+    const {
+      target: { name },
+    } = e;
+
+    let provider;
+    if (name === "google") {
+      provider = new firebaseProviders.GoogleAuthProvider();
+    } else if (name === "github") {
+      provider = new firebaseProviders.GithubAuthProvider();
+    }
+    await firebaseAuthorization.signInWithPopup(provider);
+  };
+
   return (
     <div className="auth-form-container">
       <div className="auth-form">
         <header>
-          <i class="fab fa-twitter"></i>
+          <i className="fab fa-twitter"></i>
         </header>
         <form onSubmit={onSubmit}>
           <input
@@ -75,13 +90,13 @@ export default () => {
         </span>
         {error ? <span>{error}</span> : null}
         <div className="auth-form-buttons">
-          <button>
-            <span>Continue with</span>
-            <i class="fab fa-google"></i>
+          <button onClick={socialLogIn} name="google">
+            Continue with
+            <i className="fab fa-google"></i>
           </button>
-          <button>
-            <span>Continue with</span>
-            <i class="fab fa-github"></i>
+          <button onClick={socialLogIn} name="github">
+            Continue with
+            <i className="fab fa-github"></i>
           </button>
         </div>
       </div>
