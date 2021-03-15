@@ -5,6 +5,14 @@ const Home = () => {
   const [tweet, setTweet] = useState("");
   const [tweets, setTweets] = useState([]);
 
+  useEffect(async () => {
+    const data = await firebaseDB.collection("tweets").get();
+    data.forEach((document) => {
+      const tweetObject = { ...document.data(), id: document.id };
+      setTweets((prev) => [tweetObject, ...prev]);
+    });
+  }, []);
+
   const onChange = (e) => {
     const {
       target: { value },
@@ -32,6 +40,13 @@ const Home = () => {
         />
         <input type="submit" value="Tweet" />
       </form>
+      <div>
+        {tweets.map((tweet) => (
+          <div key={tweet.id}>
+            <h2>{tweet.tweet}</h2>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
