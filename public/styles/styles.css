@@ -3,7 +3,8 @@ body {
   color: white;
 }
 
-button {
+button,
+input[type="text"] {
   outline: none;
 }
 
@@ -132,5 +133,134 @@ button:hover,
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+/* TWEET FORM */
+.tweet-form {
+  display: flex;
+  justify-content: center;
+}
+
+.tweet-form > input[type="text"] {
+  padding: 10px;
+  width: 180px;
+  margin-right: 20px;
+  border-radius: 25px;
+  border: 2px solid black;
+  background-color: white;
+  box-shadow: 0px 3px white;
+}
+
+.tweet-form > input[type="text"]:hover,
+.tweet-form > input[type="text"]:focus {
+  animation: expandInput 1s linear forwards;
+}
+
+@keyframes expandInput {
+  from {
+    transform: none;
+  }
+  to {
+    width: 300px;
+  }
+}
+
+.tweet-form > input[type="text"]::placeholder {
+  padding-left: 10px;
+}
+
+.tweet-form > button {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #4c9be5;
+  border: 2px solid black;
+  color: white;
+  box-shadow: 0px 2px white;
+}
+
+.tweet-form > button:hover {
+  animation: buttonPress 0.3s linear forwards;
+}
+
+.tweet-form > button > i {
+  animation: iconOpacity 2s linear infinite;
+}
+
+/* TWEETS */
+
+.tweeter-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.tweets-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 30px;
+  width: 25%;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.tweet {
+  margin-top: 20px;
+  width: 320px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 5px white;
+  border: 3px solid black;
+  border-top-left-radius: 0px;
+  margin-right: 65px;
+}
+
+.tweet > h2 {
+  padding: 15px;
+  color: black;
+}
+
+/* NAV STYLE */
+nav {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0px;
+}
+
+.nav-icon {
+  font-size: 40px;
+  color: black;
+  padding: 15px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0px 4px white;
+  border: 2px solid black;
+}
+
+.nav-icon:first-child {
+  margin-right: 40px;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+}
+
+.nav-icon:hover {
+  animation: buttonPress 0.3s linear forwards;
+}
+
+@keyframes buttonPress {
+  from {
+    transform: none;
+  }
+  to {
+    box-shadow: 0px 2px white;
   }
 }

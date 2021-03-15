@@ -12,7 +12,6 @@ import Nav from "./Nav";
 export default ({ isLoggedIn }) => {
   return (
     <Router>
-      {isLoggedIn && <Nav />}
       <Switch>
         {isLoggedIn ? (
           <>
@@ -29,6 +28,7 @@ export default ({ isLoggedIn }) => {
           </Route>
         )}
       </Switch>
+      {isLoggedIn && <Nav />}
     </Router>
   );
 };

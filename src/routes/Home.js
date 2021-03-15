@@ -29,8 +29,8 @@ const Home = () => {
     setTweet("");
   };
   return (
-    <div>
-      <form onSubmit={onSubmit}>
+    <div className="tweeter-home">
+      <form className="tweet-form" onSubmit={onSubmit}>
         <input
           value={tweet}
           onChange={onChange}
@@ -38,11 +38,13 @@ const Home = () => {
           placeholder="What's on your mind?"
           maxLength={120}
         />
-        <input type="submit" value="Tweet" />
+        <button>
+          <i className="fab fa-twitter"></i>
+        </button>
       </form>
-      <div>
+      <div className="tweets-container">
         {tweets.map((tweet) => (
-          <div key={tweet.id}>
+          <div className="tweet" key={tweet.id}>
             <h2>{tweet.tweet}</h2>
           </div>
         ))}
