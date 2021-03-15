@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { firebaseAuthorization, firebaseProviders } from "../firebase";
+
 export default () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -46,7 +47,6 @@ export default () => {
     const {
       target: { name },
     } = e;
-
     let provider;
     if (name === "google") {
       provider = new firebaseProviders.GoogleAuthProvider();

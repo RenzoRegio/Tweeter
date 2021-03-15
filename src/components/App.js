@@ -9,6 +9,8 @@ function App() {
     firebaseAuthorization.onAuthStateChanged((user) => {
       if (user) {
         setIsLoggedIn(true);
+      } else {
+        setIsLoggedIn(false);
       }
       setInitialize(true);
     });
