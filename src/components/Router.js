@@ -28,7 +28,6 @@ export default ({ isLoggedIn, userObj }) => {
           </Route>
         )}
       </Switch>
-      {isLoggedIn && <Nav />}
     </Router>
   );
 };

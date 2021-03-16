@@ -57,11 +57,18 @@ export default ({ tweetObj, userObj }) => {
             <button className="update-btn">
               <i class="fab fa-twitter"></i>
             </button>
-            <button onClick={toggleEditing}>Cancel</button>
+            <button className="cancel-btn" onClick={toggleEditing}>
+              Cancel
+            </button>
           </form>
         </div>
       ) : (
-        <h2>{tweetObj.text}</h2>
+        <>
+          <h2>{tweetObj.text}</h2>
+          <span className="tweet-user">
+            by {checkUser(tweetObj.userId) ? "you" : tweetObj.userName}
+          </span>
+        </>
       )}
     </div>
   );
