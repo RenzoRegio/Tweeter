@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { firebaseDB, firebaseAuthorization } from "../firebase";
 
+//Component
+import Tweet from "../components/Tweet";
+
 const Home = ({ userObj }) => {
   const [tweet, setTweet] = useState("");
   const [tweets, setTweets] = useState([]);
-
-  const checkUser = (userId) => {
-    const currentUserId = firebaseAuthorization.currentUser.uid;
-    if (currentUserId == userId) {
-      return true;
-    }
-  };
 
   useEffect(async () => {
     firebaseDB.collection("tweets").onSnapshot((snapshot) => {
@@ -55,18 +51,7 @@ const Home = ({ userObj }) => {
       </form>
       <div className="tweets-container">
         {tweets.map((tweet) => (
-          <div
-            className={checkUser(tweet.userId) ? "my-tweet" : "tweet"}
-            key={tweet.id}
-          >
-            {checkUser(tweet.userId) && (
-              <div className="edit-buttons">
-                <i class="fas fa-trash-alt"></i>
-                <i class="fas fa-edit"></i>
-              </div>
-            )}
-            <h2>{tweet.text}</h2>
-          </div>
+          <Tweet key={tweet.id} tweetObj={tweet} userObj={userObj} />
         ))}
       </div>
     </div>
