@@ -152,20 +152,6 @@ button:hover,
   box-shadow: 0px 3px white;
 }
 
-.tweet-form > input[type="text"]:hover,
-.tweet-form > input[type="text"]:focus {
-  animation: expandInput 1s linear forwards;
-}
-
-@keyframes expandInput {
-  from {
-    transform: none;
-  }
-  to {
-    width: 300px;
-  }
-}
-
 .tweet-form > input[type="text"]::placeholder {
   padding-left: 10px;
 }
@@ -220,11 +206,40 @@ button:hover,
   margin-right: 65px;
 }
 
-.tweet > h2 {
+.my-tweet {
+  margin-top: 20px;
+  width: 320px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0px 5px white;
+  border: 3px solid black;
+  border-top-right-radius: 0px;
+  margin-left: 65px;
+}
+
+.tweet > h2,
+.my-tweet > h2 {
   padding: 15px;
   color: black;
 }
 
+.edit-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  color: black;
+  font-size: 20px;
+}
+
+.edit-buttons > i {
+  margin-right: 5px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.edit-buttons > i:hover {
+  transform: scale(1.5);
+  cursor: pointer;
+}
 /* NAV STYLE */
 nav {
   display: flex;

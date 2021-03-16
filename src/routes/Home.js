@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { firebaseDB } from "../firebase";
+import { firebaseDB, firebaseAuthorization } from "../firebase";
 
-const Home = () => {
+const Home = ({ userObj }) => {
   const [tweet, setTweet] = useState("");
   const [tweets, setTweets] = useState([]);
 
+  const checkUser = (userId) => {
+    const currentUserId = firebaseAuthorization.currentUser.uid;
+    if (currentUserId == userId) {
+      return true;
+    }
+  };
+
   useEffect(async () => {
-    const data = await firebaseDB.collection("tweets").get();
-    data.forEach((document) => {
-      const tweetObject = { ...document.data(), id: document.id };
-      setTweets((prev) => [tweetObject, ...prev]);
+    firebaseDB.collection("tweets").onSnapshot((snapshot) => {
+      const tweetArray = snapshot.docs.map((document) => {
+        return { id: document.id, ...document.data() };
+      });
+      setTweets(tweetArray);
     });
   }, []);
 
@@ -23,13 +31,16 @@ const Home = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     await firebaseDB.collection("tweets").add({
-      tweet,
+      text: tweet,
       createdAt: Date.now(),
+      userId: userObj.uid,
     });
     setTweet("");
   };
+
   return (
     <div className="tweeter-home">
+      <h1>Hello, {firebaseAuthorization.currentUser.email}!</h1>
       <form className="tweet-form" onSubmit={onSubmit}>
         <input
           value={tweet}
@@ -44,8 +55,17 @@ const Home = () => {
       </form>
       <div className="tweets-container">
         {tweets.map((tweet) => (
-          <div className="tweet" key={tweet.id}>
-            <h2>{tweet.tweet}</h2>
+          <div
+            className={checkUser(tweet.userId) ? "my-tweet" : "tweet"}
+            key={tweet.id}
+          >
+            {checkUser(tweet.userId) && (
+              <div className="edit-buttons">
+                <i class="fas fa-trash-alt"></i>
+                <i class="fas fa-edit"></i>
+              </div>
+            )}
+            <h2>{tweet.text}</h2>
           </div>
         ))}
       </div>

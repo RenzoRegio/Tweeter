@@ -9,14 +9,14 @@ import Profile from "../routes/Profile";
 //Components
 import Nav from "./Nav";
 
-export default ({ isLoggedIn }) => {
+export default ({ isLoggedIn, userObj }) => {
   return (
     <Router>
       <Switch>
         {isLoggedIn ? (
           <>
             <Route exact path="/">
-              <Home />
+              <Home userObj={userObj} />
             </Route>
             <Route exact path="/profile">
               <Profile />
