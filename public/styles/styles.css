@@ -45,7 +45,7 @@ button:hover,
 }
 
 .auth-form > header > i:first-child {
-  font-size: 40px;
+  font-size: 70px;
   color: #4c9be5;
   margin-right: 5px;
   margin-bottom: 20px;
@@ -66,7 +66,7 @@ button:hover,
 
 .auth-form > header > span {
   font-weight: 700;
-  font-size: 15px;
+  font-size: 25px;
 }
 
 .auth-form > form {
@@ -76,10 +76,15 @@ button:hover,
 
 .auth-form > form > input {
   margin: 10px;
-  border-radius: 20px;
+  border-radius: 30px;
   border: 2px solid black;
   padding: 10px;
   outline: none;
+  font-size: 20px;
+}
+
+.button {
+  font-size: 20px;
 }
 
 .auth-form > form > input[type="submit"] {
@@ -95,6 +100,7 @@ button:hover,
   border: 2px solid black;
   padding: 10px;
   font-weight: 800;
+  font-size: 20px;
 }
 
 .auth-form-buttons > button:first-child {
@@ -168,12 +174,18 @@ button:hover,
 
 .tweet-form > input[type="text"] {
   padding: 10px;
-  width: 280px;
+  width: 200px;
   margin-right: 20px;
   border-radius: 25px;
   border: 3px solid black;
   background-color: white;
   box-shadow: 1px 3px white, 1px 4px black, 1px 5px black, 1px 6px black;
+  transition: width 0.7s ease-in-out;
+}
+
+.tweet-form > input[type="text"]:hover,
+.tweet-form > input[type="text"]:focus {
+  width: 300px;
 }
 
 .tweet-form > input[type="text"]::placeholder {
@@ -374,28 +386,28 @@ nav {
   border: 2px solid black;
   padding: 25px;
   height: 300px;
-  width: 350px;
+  width: 450px;
   flex-direction: column;
   box-shadow: 3px 4px, 4px 5px white, 4px 6px black, 4px 7px black,
-    4px 8px black, 10px 10px black;
+    4px 8px black, 10px 10px 4px black;
 }
 .sign-out > h1 {
   color: black;
-  letter-spacing: 2px;
+  letter-spacing: 5px;
 }
 
 .sign-out > div {
-  display: flex;
-  justify-content: space-around;
+  margin-top: 15px;
 }
 
 .sign-out > div > button {
   padding: 15px;
   border-radius: 20px;
   border: 2px solid black;
-  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black, 1px 6px black;
+  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black, 1px 6px 1px black;
   font-weight: 800;
   margin: 10px;
+  font-size: 18px;
 }
 .sign-out > div > button > i {
   margin-left: 5px;
