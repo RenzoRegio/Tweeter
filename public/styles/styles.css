@@ -13,6 +13,13 @@ button:hover,
   cursor: pointer;
 }
 
+.twitter-icon-large {
+  font-size: 100px;
+  margin-bottom: 40px;
+  background: whitesmoke;
+  text-shadow: 0 1px 0 #4c9be5;
+}
+
 .auth-form-container {
   display: flex;
   justify-content: center;
@@ -29,6 +36,7 @@ button:hover,
   height: 300px;
   border-radius: 20px;
   padding: 20px;
+  color: black;
 }
 
 .auth-form > header {
@@ -183,7 +191,7 @@ button:hover,
 }
 
 .tweet-form > button:hover {
-  animation: buttonPress 0.3s linear forwards;
+  animation: buttonDown 0.1s linear forwards;
 }
 
 .tweet-form > button > i {
@@ -295,6 +303,7 @@ nav {
   border-radius: 50%;
   border: 2px solid white;
   margin: 15px;
+  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black;
 }
 
 .nav-buttons {
@@ -305,15 +314,8 @@ nav {
 
 .nav-icon:hover {
   animation: buttonPress 0.3s linear forwards;
-}
-
-@keyframes buttonPress {
-  from {
-    transform: none;
-  }
-  to {
-    box-shadow: 0px 2px white;
-  }
+  color: black;
+  background-color: white;
 }
 
 /* UPDATE TWEET FORM */
@@ -354,4 +356,70 @@ nav {
   border-radius: 30px;
   border: 2px solid white;
   font-weight: 700;
+}
+
+/* SIGN OUT */
+
+.sign-out-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-out {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  padding: 25px;
+  height: 300px;
+  width: 350px;
+  flex-direction: column;
+  box-shadow: 3px 4px, 4px 5px white, 4px 6px black, 4px 7px black,
+    4px 8px black, 10px 10px black;
+}
+.sign-out > h1 {
+  color: black;
+  letter-spacing: 2px;
+}
+
+.sign-out > div {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sign-out > div > button {
+  padding: 15px;
+  border-radius: 20px;
+  border: 2px solid black;
+  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black, 1px 6px black;
+  font-weight: 800;
+  margin: 10px;
+}
+.sign-out > div > button > i {
+  margin-left: 5px;
+}
+
+.sign-out > div > button:hover {
+  color: white;
+}
+
+.sign-out > div > button:first-child:hover {
+  background-color: #f83759;
+  animation: buttonDown 0.1s linear forwards;
+}
+
+.sign-out > div > button:nth-child(2):hover {
+  background-color: #4c9be5;
+  animation: buttonDown 0.1s linear forwards;
+}
+
+@keyframes buttonDown {
+  from {
+    box-shadow: 1px 3px white, 1px 4px black, 1px 5px black, 1px 6px black;
+  }
+  to {
+    box-shadow: 1px 1px white, 1px 2px black;
+  }
 }

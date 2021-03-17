@@ -38,6 +38,7 @@ const Home = ({ userObj }) => {
 
   return (
     <div className="tweeter-home">
+      <i className="twitter-icon-large fab fa-twitter">#Tweeter</i>
       <div className="nav-bar">
         <form className="tweet-form" onSubmit={onSubmit}>
           <input
