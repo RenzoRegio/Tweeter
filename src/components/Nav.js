@@ -15,6 +15,11 @@ export default () => {
             <i className="nav-icon fas fa-user-alt"></i>
           </Link>
         </div>
+        <div>
+          <Link to="/sign-out">
+            <i class="nav-icon fas fa-power-off"></i>
+          </Link>
+        </div>
       </div>
     </nav>
   );

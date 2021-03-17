@@ -7,6 +7,7 @@ import Home from "../routes/Home";
 import Profile from "../routes/Profile";
 
 //Components
+import SignOut from "../routes/SignOut";
 import Nav from "./Nav";
 
 export default ({ isLoggedIn, userObj }) => {
@@ -20,6 +21,9 @@ export default ({ isLoggedIn, userObj }) => {
             </Route>
             <Route exact path="/profile">
               <Profile />
+            </Route>
+            <Route exact path="/sign-out">
+              <SignOut />
             </Route>
           </>
         ) : (
