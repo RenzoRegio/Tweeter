@@ -161,10 +161,31 @@ button:hover,
   background-color: white;
   border-radius: 20px;
   padding: 10px;
-  width: 40%;
+  width: 43%;
   border: 4px solid black;
   box-shadow: 5px 4px, 4px 5px white, 4px 6px black, 4px 7px black,
     4px 8px black, 10px 10px black;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.upload-photo {
+  color: black;
+  border: 2px solid black;
+  font-size: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 50%;
+  box-shadow: 1px 2px white, 1px 3px black, 1px 5px black;
+  margin-right: 10px;
+}
+
+.upload-photo:hover {
+  cursor: pointer;
 }
 
 .tweet-form {
@@ -194,8 +215,8 @@ button:hover,
 
 .tweet-form > button {
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   background-color: #4c9be5;
   border: 2px solid black;
   color: white;
@@ -207,6 +228,7 @@ button:hover,
 }
 
 .tweet-form > button > i {
+  font-size: 22px;
   animation: iconOpacity 2s linear infinite;
 }
 
@@ -308,7 +330,7 @@ nav {
 }
 
 .nav-icon {
-  font-size: 18px;
+  font-size: 23px;
   color: white;
   padding: 15px;
   background-color: black;

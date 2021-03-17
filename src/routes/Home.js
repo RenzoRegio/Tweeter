@@ -48,6 +48,10 @@ const Home = ({ userObj }) => {
             placeholder="What's on your mind?"
             maxLength={120}
           />
+          <label className="upload-photo">
+            <input type="file" accept="image/*" />
+            <i class="fas fa-camera"></i>
+          </label>
           <button>
             <i className="fab fa-twitter"></i>
           </button>
