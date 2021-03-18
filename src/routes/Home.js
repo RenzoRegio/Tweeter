@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { firebaseDB, firebaseAuthorization } from "../firebase";
+import { v4 as uuid } from "uuid";
+import { firebaseDB, firebaseStorage } from "../firebase";
 
 //Component
 import Tweet from "../components/Tweet";
@@ -47,13 +48,19 @@ const Home = ({ userObj }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await firebaseDB.collection("tweets").add({
+    const fileRef = firebaseStorage.ref().child(`${userObj.uid}/${uuid()}`);
+    const response = await fileRef.putString(image, "data_url");
+    const imageURL = await response.ref.getDownloadURL();
+    const tweetObj = {
       text: tweet,
       createdAt: Date.now(),
       userId: userObj.uid,
       userName: userObj.email,
-    });
+      imageURL,
+    };
+    await firebaseDB.collection("tweets").add(tweetObj);
     setTweet("");
+    setImage("");
   };
 
   return (

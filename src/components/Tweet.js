@@ -68,6 +68,7 @@ export default ({ tweetObj, userObj }) => {
           <span className="tweet-user">
             by {checkUser(tweetObj.userId) ? "you" : tweetObj.userName}
           </span>
+          {tweetObj.imageURL && <img src={tweetObj.imageURL} />}
         </>
       )}
     </div>
