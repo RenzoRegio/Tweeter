@@ -64,6 +64,7 @@ const Home = ({ userObj }) => {
             placeholder="What's on your mind?"
             maxLength={120}
           />
+          {image && <img src={image} />}
           <label className="upload-photo">
             <input type="file" accept="image/*" onChange={onFileChange} />
             <i className="fas fa-camera"></i>
