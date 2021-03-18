@@ -41,6 +41,10 @@ const Home = ({ userObj }) => {
     };
   };
 
+  const removeImage = () => {
+    setImage("");
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     await firebaseDB.collection("tweets").add({
@@ -64,7 +68,14 @@ const Home = ({ userObj }) => {
             placeholder="What's on your mind?"
             maxLength={120}
           />
-          {image && <img src={image} />}
+          {image && (
+            <div className="image-tweet-container">
+              <img src={image} />
+              <button onClick={removeImage}>
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          )}
           <label className="upload-photo">
             <input type="file" accept="image/*" onChange={onFileChange} />
             <i className="fas fa-camera"></i>
