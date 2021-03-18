@@ -8,6 +8,7 @@ import Nav from "../components/Nav";
 const Home = ({ userObj }) => {
   const [tweet, setTweet] = useState("");
   const [tweets, setTweets] = useState([]);
+  const [image, setImage] = useState("");
 
   useEffect(async () => {
     firebaseDB.collection("tweets").onSnapshot((snapshot) => {
@@ -23,6 +24,21 @@ const Home = ({ userObj }) => {
       target: { value },
     } = e;
     setTweet(value);
+  };
+
+  const onFileChange = (e) => {
+    const {
+      target: { files },
+    } = e;
+    const imageFile = files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(imageFile);
+    reader.onloadend = (finishedEvent) => {
+      const {
+        target: { result },
+      } = finishedEvent;
+      setImage(result);
+    };
   };
 
   const onSubmit = async (e) => {
@@ -49,8 +65,8 @@ const Home = ({ userObj }) => {
             maxLength={120}
           />
           <label className="upload-photo">
-            <input type="file" accept="image/*" />
-            <i class="fas fa-camera"></i>
+            <input type="file" accept="image/*" onChange={onFileChange} />
+            <i className="fas fa-camera"></i>
           </label>
           <button>
             <i className="fab fa-twitter"></i>
