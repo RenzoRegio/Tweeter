@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { firebaseDB } from "../firebase";
+import { firebaseDB, firebaseStorage } from "../firebase";
 
 export default ({ tweetObj, userObj }) => {
   const [editing, setEditing] = useState(false);
@@ -12,12 +12,15 @@ export default ({ tweetObj, userObj }) => {
     }
   };
 
-  const deleteTweet = () => {
+  const deleteTweet = async () => {
     const confirmToDelete = window.confirm(
       "Are you sure you want to delete this Tweet?"
     );
     if (confirmToDelete) {
-      firebaseDB.collection("tweets").doc(tweetObj.id).delete();
+      await firebaseDB.collection("tweets").doc(tweetObj.id).delete();
+      if (tweetObj.imageURL) {
+        await firebaseStorage.refFromURL(tweetObj.imageURL).delete();
+      }
     }
   };
 
