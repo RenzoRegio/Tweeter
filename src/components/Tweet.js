@@ -64,11 +64,19 @@ export default ({ tweetObj, userObj }) => {
         </div>
       ) : (
         <>
-          <h2>{tweetObj.text}</h2>
+          <div
+            className={tweetObj.imageURL ? "tweet-contents" : "tweet-content"}
+          >
+            <h2 className={tweetObj.imageURL && "tweet-with-photo"}>
+              {tweetObj.text}
+            </h2>
+            {tweetObj.imageURL && (
+              <img className="tweet-image" src={tweetObj.imageURL} />
+            )}
+          </div>
           <span className="tweet-user">
             by {checkUser(tweetObj.userId) ? "you" : tweetObj.userName}
           </span>
-          {tweetObj.imageURL && <img src={tweetObj.imageURL} />}
         </>
       )}
     </div>

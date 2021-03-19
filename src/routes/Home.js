@@ -10,6 +10,7 @@ const Home = ({ userObj }) => {
   const [tweet, setTweet] = useState("");
   const [tweets, setTweets] = useState([]);
   const [image, setImage] = useState("");
+  const [imageAdded, setImageAdded] = useState(false);
 
   useEffect(async () => {
     firebaseDB.collection("tweets").onSnapshot((snapshot) => {
@@ -40,27 +41,40 @@ const Home = ({ userObj }) => {
       } = finishedEvent;
       setImage(result);
     };
+    setImageAdded(true);
   };
 
   const removeImage = () => {
     setImage("");
+    setImageAdded(false);
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const fileRef = firebaseStorage.ref().child(`${userObj.uid}/${uuid()}`);
-    const response = await fileRef.putString(image, "data_url");
-    const imageURL = await response.ref.getDownloadURL();
-    const tweetObj = {
-      text: tweet,
-      createdAt: Date.now(),
-      userId: userObj.uid,
-      userName: userObj.email,
-      imageURL,
-    };
+    let tweetObj;
+    if (imageAdded) {
+      const fileRef = firebaseStorage.ref().child(`${userObj.uid}/${uuid()}`);
+      const response = await fileRef.putString(image, "data_url");
+      const imageURL = await response.ref.getDownloadURL();
+      tweetObj = {
+        text: tweet,
+        createdAt: Date.now(),
+        userId: userObj.uid,
+        userName: userObj.email,
+        imageURL,
+      };
+
+      setImage("");
+    } else {
+      tweetObj = {
+        text: tweet,
+        createdAt: Date.now(),
+        userId: userObj.uid,
+        userName: userObj.email,
+      };
+    }
     await firebaseDB.collection("tweets").add(tweetObj);
     setTweet("");
-    setImage("");
   };
 
   return (
@@ -77,7 +91,7 @@ const Home = ({ userObj }) => {
           />
           {image && (
             <div className="image-tweet-container">
-              <img src={image} />
+              <img className="tweet-form-image" src={image} />
               <button onClick={removeImage}>
                 <i class="fas fa-times"></i>
               </button>
