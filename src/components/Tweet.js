@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { firebaseDB, firebaseStorage } from "../firebase";
 
-export default ({ tweetObj, userObj }) => {
+export default ({ tweetObj, userObj, profile }) => {
   const [editing, setEditing] = useState(false);
   const [newTweet, setNewTweet] = useState(tweetObj.text);
 
@@ -40,48 +40,100 @@ export default ({ tweetObj, userObj }) => {
   };
 
   return (
-    <div className={checkUser(tweetObj.userId) ? "my-tweet" : "tweet"}>
-      {checkUser(tweetObj.userId) && !editing ? (
-        <div className="edit-buttons">
-          <i onClick={deleteTweet} className="fas fa-trash-alt"></i>
-          <i onClick={toggleEditing} className="fas fa-edit"></i>
-        </div>
-      ) : null}
-      {editing ? (
-        <div className="update-form">
-          <form onSubmit={(e) => updateTweet(e)}>
-            <input
-              onChange={onChange}
-              type="text"
-              value={newTweet}
-              placeholder="Edit Tweet"
-              required
-            />
-            <button className="update-btn">
-              <i class="fab fa-twitter"></i>
-            </button>
-            <button className="cancel-btn" onClick={toggleEditing}>
-              Cancel
-            </button>
-          </form>
+    <>
+      {profile ? (
+        <div className="profile-tweet">
+          {checkUser(tweetObj.userId) && !editing ? (
+            <div className="edit-buttons">
+              <i onClick={deleteTweet} className="fas fa-trash-alt"></i>
+              <i onClick={toggleEditing} className="fas fa-edit"></i>
+            </div>
+          ) : null}
+          {editing ? (
+            <div className="update-form">
+              <form onSubmit={(e) => updateTweet(e)}>
+                <input
+                  onChange={onChange}
+                  type="text"
+                  value={newTweet}
+                  placeholder="Edit Tweet"
+                  required
+                />
+                <button className="update-btn">
+                  <i class="fab fa-twitter"></i>
+                </button>
+                <button className="cancel-btn" onClick={toggleEditing}>
+                  Cancel
+                </button>
+              </form>
+            </div>
+          ) : (
+            <>
+              <div
+                className={
+                  tweetObj.imageURL ? "tweet-contents" : "tweet-content"
+                }
+              >
+                <h2 className={tweetObj.imageURL && "tweet-with-photo"}>
+                  {tweetObj.text}
+                </h2>
+                {tweetObj.imageURL && (
+                  <img className="tweet-image" src={tweetObj.imageURL} />
+                )}
+              </div>
+              <span className="tweet-user">
+                by {checkUser(tweetObj.userId) ? "you" : tweetObj.userName}
+              </span>
+            </>
+          )}
         </div>
       ) : (
-        <>
-          <div
-            className={tweetObj.imageURL ? "tweet-contents" : "tweet-content"}
-          >
-            <h2 className={tweetObj.imageURL && "tweet-with-photo"}>
-              {tweetObj.text}
-            </h2>
-            {tweetObj.imageURL && (
-              <img className="tweet-image" src={tweetObj.imageURL} />
-            )}
-          </div>
-          <span className="tweet-user">
-            by {checkUser(tweetObj.userId) ? "you" : tweetObj.userName}
-          </span>
-        </>
+        <div className={checkUser(tweetObj.userId) ? "my-tweet" : "tweet"}>
+          {checkUser(tweetObj.userId) && !editing ? (
+            <div className="edit-buttons">
+              <i onClick={deleteTweet} className="fas fa-trash-alt"></i>
+              <i onClick={toggleEditing} className="fas fa-edit"></i>
+            </div>
+          ) : null}
+          {editing ? (
+            <div className="update-form">
+              <form onSubmit={(e) => updateTweet(e)}>
+                <input
+                  onChange={onChange}
+                  type="text"
+                  value={newTweet}
+                  placeholder="Edit Tweet"
+                  required
+                />
+                <button className="update-btn">
+                  <i class="fab fa-twitter"></i>
+                </button>
+                <button className="cancel-btn" onClick={toggleEditing}>
+                  Cancel
+                </button>
+              </form>
+            </div>
+          ) : (
+            <>
+              <div
+                className={
+                  tweetObj.imageURL ? "tweet-contents" : "tweet-content"
+                }
+              >
+                <h2 className={tweetObj.imageURL && "tweet-with-photo"}>
+                  {tweetObj.text}
+                </h2>
+                {tweetObj.imageURL && (
+                  <img className="tweet-image" src={tweetObj.imageURL} />
+                )}
+              </div>
+              <span className="tweet-user">
+                by {checkUser(tweetObj.userId) ? "you" : tweetObj.userName}
+              </span>
+            </>
+          )}
+        </div>
       )}
-    </div>
+    </>
   );
 };
