@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { firebaseDB } from "../firebase";
+import { firebaseDB, firebaseAuthorization } from "../firebase";
 
 import Tweet from "../components/Tweet";
 import Main from "../components/Main-Nav";
 
 export default ({ userObj }) => {
   const [tweets, setTweets] = useState([]);
+  const [displayName, setDisplayName] = useState(
+    userObj.displayName || userObj.email
+  );
+  const [newName, setNewName] = useState(userObj.displayName || userObj.email);
 
   const getMyTweets = async () => {
-    const tweets = await firebaseDB
+    await firebaseDB
       .collection("tweets")
       .where("userId", "==", userObj.uid)
       .onSnapshot((snapshot) => {
@@ -22,6 +26,22 @@ export default ({ userObj }) => {
   useEffect(() => {
     getMyTweets();
   }, []);
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (userObj.displayName || userObj.email !== displayName) {
+      const user = firebaseAuthorization.currentUser;
+      await user.updateProfile({ displayName });
+      setNewName(user.displayName);
+    }
+  };
+
+  const onChange = (e) => {
+    const {
+      target: { value },
+    } = e;
+    setDisplayName(value);
+  };
 
   return (
     <div className="tweeter-profile">
@@ -37,10 +57,19 @@ export default ({ userObj }) => {
         ))}
       </div>
       <div className="profile-container">
-        <h1>Hi, {userObj.email}!</h1>
+        <h1>Hi, {newName}!</h1>
         <h2>
           You have {tweets.length} <i className="fab fa-twitter"></i>'s
         </h2>
+        <form onSubmit={onSubmit}>
+          <input
+            onChange={onChange}
+            type="text"
+            placeholder="Display Name"
+            value={displayName}
+          />
+          <input type="submit" />
+        </form>
       </div>
       <Main userObj={userObj} />
     </div>
