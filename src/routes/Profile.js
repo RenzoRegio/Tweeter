@@ -14,6 +14,7 @@ export default ({ userObj }) => {
   const getMyTweets = async () => {
     await firebaseDB
       .collection("tweets")
+      .orderBy("createdAt", "desc")
       .where("userId", "==", userObj.uid)
       .onSnapshot((snapshot) => {
         const tweetArray = snapshot.docs.map((doc) => {
@@ -68,7 +69,9 @@ export default ({ userObj }) => {
             placeholder="Display Name"
             value={displayName}
           />
-          <input type="submit" />
+          <button>
+            <i class="fas fa-pencil-alt"></i>
+          </button>
         </form>
       </div>
       <Main userObj={userObj} />

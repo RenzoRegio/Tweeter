@@ -9,12 +9,15 @@ const Home = ({ userObj }) => {
   const [tweets, setTweets] = useState([]);
 
   useEffect(async () => {
-    firebaseDB.collection("tweets").onSnapshot((snapshot) => {
-      const tweetArray = snapshot.docs.map((document) => {
-        return { id: document.id, ...document.data() };
+    firebaseDB
+      .collection("tweets")
+      .orderBy("createdAt", "desc")
+      .onSnapshot((snapshot) => {
+        const tweetArray = snapshot.docs.map((document) => {
+          return { id: document.id, ...document.data() };
+        });
+        setTweets(tweetArray);
       });
-      setTweets(tweetArray);
-    });
   }, []);
 
   return (
