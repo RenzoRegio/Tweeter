@@ -19,10 +19,10 @@ export default () => {
         <h1>Heading out so soon?</h1>
         <div>
           <button onClick={signOut}>
-            Yes <i class="far fa-frown"></i>
+            Yes <i className="far fa-frown"></i>
           </button>
           <button onClick={returnHome}>
-            No, bring me back home<i class="fab fa-twitter"></i>
+            No, bring me back home<i className="fab fa-twitter"></i>
           </button>
         </div>
       </div>

@@ -17,7 +17,7 @@ export default () => {
         </div>
         <div>
           <NavLink className="nav-btn" to="/sign-out">
-            <i class="nav-icon fas fa-power-off"></i>
+            <i className="nav-icon fas fa-power-off"></i>
           </NavLink>
         </div>
       </div>

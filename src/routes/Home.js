@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { firebaseDB, firebaseStorage } from "../firebase";
+import { firebaseDB } from "../firebase";
 
-//Component
+// Components
 import Tweet from "../components/Tweet";
 import Main from "../components/Main-Nav";
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { firebaseDB, firebaseAuthorization } from "../firebase";
 
+// Components
 import Tweet from "../components/Tweet";
 import Main from "../components/Main-Nav";
 
@@ -70,7 +71,7 @@ export default ({ userObj }) => {
             value={displayName}
           />
           <button>
-            <i class="fas fa-pencil-alt"></i>
+            <i className="fas fa-pencil-alt"></i>
           </button>
         </form>
       </div>

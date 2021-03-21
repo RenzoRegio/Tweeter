@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
-//Routes
+// Routes
 import Auth from "../routes/Auth";
 import Home from "../routes/Home";
 import Profile from "../routes/Profile";
 
-//Components
+// Components
 import SignOut from "../routes/SignOut";
-import Nav from "./Nav";
 
 export default ({ isLoggedIn, userObj }) => {
   return (

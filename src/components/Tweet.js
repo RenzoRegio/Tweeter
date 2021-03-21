@@ -60,7 +60,7 @@ export default ({ tweetObj, userObj, profile }) => {
                   required
                 />
                 <button className="update-btn">
-                  <i class="fab fa-twitter"></i>
+                  <i className="fab fa-twitter"></i>
                 </button>
                 <button className="cancel-btn" onClick={toggleEditing}>
                   Cancel
@@ -106,7 +106,7 @@ export default ({ tweetObj, userObj, profile }) => {
                   required
                 />
                 <button className="update-btn">
-                  <i class="fab fa-twitter"></i>
+                  <i className="fab fa-twitter"></i>
                 </button>
                 <button className="cancel-btn" onClick={toggleEditing}>
                   Cancel

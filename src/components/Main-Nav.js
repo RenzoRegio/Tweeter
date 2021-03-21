@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 import { firebaseStorage, firebaseDB } from "../firebase";
 
+// Components
 import Nav from "./Nav";
 
 export default ({ userObj }) => {
@@ -74,12 +75,13 @@ export default ({ userObj }) => {
           type="text"
           placeholder="What's on your mind?"
           maxLength={120}
+          required
         />
         {image && (
           <div className="image-tweet-container">
             <img className="tweet-form-image" src={image} />
             <button onClick={removeImage}>
-              <i class="fas fa-times"></i>
+              <i className="fas fa-times"></i>
             </button>
           </div>
         )}
