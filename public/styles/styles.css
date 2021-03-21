@@ -361,13 +361,30 @@ nav {
   margin-left: 30px;
 }
 
-.nav-icon {
+.nav-btn {
   font-size: 23px;
   color: white;
+}
+
+.active {
+  height: 50px;
+  border-radius: 20px;
+  background-image: linear-gradient(-45deg, #4c9be5, #f5f8fa);
+  background-size: 200% 200%;
+  animation: gradientEffect 3s linear infinite;
+  border: 1px solid black;
+}
+
+.active > .nav-icon {
+  color: black;
+  background-color: white;
+}
+
+.nav-icon {
   padding: 15px;
-  background-color: black;
   border-radius: 50%;
-  border: 2px solid white;
+  color: black;
+  border: 1px solid black;
   margin: 15px;
   box-shadow: 1px 3px white, 1px 4px black, 1px 5px black;
 }
@@ -376,12 +393,6 @@ nav {
   display: flex;
   justify-content: center;
   width: 30%;
-}
-
-.nav-icon:hover {
-  animation: buttonPress 0.3s linear forwards;
-  color: black;
-  background-color: white;
 }
 
 /* UPDATE TWEET FORM */

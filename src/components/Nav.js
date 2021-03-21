@@ -1,24 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default () => {
   return (
     <nav>
       <div className="nav-buttons">
         <div>
-          <Link to="/">
+          <NavLink exact className="nav-btn" to="/">
             <i className="nav-icon fas fa-home"></i>
-          </Link>
+          </NavLink>
         </div>
         <div>
-          <Link to="/profile">
+          <NavLink exact className="nav-btn" to="/profile">
             <i className="nav-icon fas fa-user-alt"></i>
-          </Link>
+          </NavLink>
         </div>
         <div>
-          <Link to="/sign-out">
+          <NavLink className="nav-btn" to="/sign-out">
             <i class="nav-icon fas fa-power-off"></i>
-          </Link>
+          </NavLink>
         </div>
       </div>
     </nav>
