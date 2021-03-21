@@ -47,7 +47,10 @@ export default ({ userObj }) => {
   return (
     <div className="tweeter-profile">
       <div className="tweets-container">
-        <h3 className="profile-header">#YourTweets</h3>
+        <h2>
+          You have {tweets.length} <i className="fab fa-twitter"></i>{" "}
+          {tweets.length > 1 && "'s"}
+        </h2>
         {tweets.map((tweet) => (
           <Tweet
             key={tweet.id}
@@ -58,10 +61,7 @@ export default ({ userObj }) => {
         ))}
       </div>
       <div className="profile-container">
-        <h1>Hi, {newName}!</h1>
-        <h2>
-          You have {tweets.length} <i className="fab fa-twitter"></i>'s
-        </h2>
+        <h1>How are you doing today, {newName}?</h1>
         <form onSubmit={onSubmit}>
           <input
             onChange={onChange}

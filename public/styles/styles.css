@@ -251,6 +251,10 @@ input[type="file"] {
     4px 8px black, 10px 10px black;
   background-color: white;
 }
+.tweets-container > h3 {
+  color: black;
+  font-size: 50px;
+}
 
 .tweet {
   margin-top: 20px;
@@ -539,9 +543,11 @@ nav {
 
 .profile-container > h1 {
   color: black;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
-.profile-container > h2 {
+.tweets-container > h2 {
   color: black;
   opacity: 50%;
 }
@@ -549,6 +555,7 @@ nav {
 .profile-container > h2 > i {
   margin-left: 5px;
 }
+
 .profile-tweet {
   margin-top: 20px;
   width: 320px;
@@ -560,7 +567,23 @@ nav {
   border-top-right-radius: 0px;
 }
 
-.tweets-container > h3 {
-  color: black;
-  font-size: 50px;
+.profile-container > form > input {
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid black;
+  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black;
+}
+
+.profile-container > form > button {
+  margin-left: 20px;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  font-size: 20px;
+  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black, 1px 6px 1px black;
+}
+
+.profile-container > form > button:hover {
+  background-color: black;
+  color: white;
 }

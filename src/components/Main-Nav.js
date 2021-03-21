@@ -48,7 +48,7 @@ export default ({ userObj }) => {
         text: tweet,
         createdAt: Date.now(),
         userId: userObj.uid,
-        userName: userObj.email,
+        userName: userObj.displayName || userObj.email,
         imageURL,
       };
 
@@ -58,7 +58,7 @@ export default ({ userObj }) => {
         text: tweet,
         createdAt: Date.now(),
         userId: userObj.uid,
-        userName: userObj.email,
+        userName: userObj.displayName || userObj.email,
       };
     }
     await firebaseDB.collection("tweets").add(tweetObj);
