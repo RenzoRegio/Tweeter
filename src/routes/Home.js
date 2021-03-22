@@ -8,8 +8,8 @@ import Main from "../components/Main-Nav";
 const Home = ({ userObj }) => {
   const [tweets, setTweets] = useState([]);
 
-  useEffect(async () => {
-    firebaseDB
+  useEffect(() => {
+    const unsubscribe = firebaseDB
       .collection("tweets")
       .orderBy("createdAt", "desc")
       .onSnapshot((snapshot) => {
@@ -18,6 +18,11 @@ const Home = ({ userObj }) => {
         });
         setTweets(tweetArray);
       });
+
+    return () => {
+      unsubscribe();
+      setTweets([]);
+    };
   }, []);
 
   return (

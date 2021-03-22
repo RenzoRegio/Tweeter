@@ -37,7 +37,6 @@ export default () => {
           password
         );
       }
-      console.log(data);
     } catch (e) {
       setError(e.message);
     }

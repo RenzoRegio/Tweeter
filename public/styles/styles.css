@@ -13,6 +13,7 @@ button:hover,
   cursor: pointer;
 }
 
+/* AUTH FORM */
 .twitter-icon-large {
   font-size: 100px;
   margin-bottom: 40px;
@@ -135,6 +136,12 @@ button:hover,
 
 .auth-form-buttons > button > i {
   margin-left: 5px;
+}
+
+.auth-form > span.button ~ span {
+  color: red;
+  margin-top: 20px;
+  font-weight: 600;
 }
 
 @keyframes gradientEffect {
