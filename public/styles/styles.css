@@ -86,6 +86,11 @@ button:hover,
 
 .button {
   font-size: 20px;
+  font-weight: 700;
+}
+
+.button:hover {
+  color: #4c9be5;
 }
 
 .auth-form > form > input[type="submit"] {
@@ -142,6 +147,8 @@ button:hover,
   color: red;
   margin-top: 20px;
   font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 2px;
 }
 
 @keyframes gradientEffect {
@@ -174,7 +181,7 @@ button:hover,
     4px 8px black, 10px 10px black;
 }
 
-input[type="file"] {
+.add-image-tweet {
   display: none;
 }
 
@@ -576,6 +583,11 @@ nav {
   margin-bottom: 40px;
 }
 
+.profile-container > h2 {
+  margin-top: 40px;
+  color: black;
+  text-align: center;
+}
 .tweets-container > h2 {
   color: black;
   opacity: 50%;
@@ -618,4 +630,30 @@ nav {
   background-color: black;
   color: white;
   animation: buttonDown 0.2s linear forwards;
+}
+
+#profile-picture-input {
+  display: none;
+}
+.profile-picture-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 150px;
+  color: black;
+}
+
+.profile-picture-container > h2 {
+  text-align: center;
+  font-size: 15px;
+}
+
+.profile-image {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 2px solid black;
+  margin-bottom: 20px;
+  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black, 1px 6px 1px black;
 }

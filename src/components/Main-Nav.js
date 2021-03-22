@@ -86,7 +86,12 @@ export default ({ userObj }) => {
           </div>
         )}
         <label className="upload-photo">
-          <input type="file" accept="image/*" onChange={onFileChange} />
+          <input
+            className="add-image-tweet"
+            type="file"
+            accept="image/*"
+            onChange={onFileChange}
+          />
           <i className="fas fa-camera"></i>
         </label>
         <button>

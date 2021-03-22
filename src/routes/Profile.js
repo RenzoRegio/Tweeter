@@ -6,14 +6,24 @@ import Tweet from "../components/Tweet";
 import Main from "../components/Main-Nav";
 
 export default ({ userObj }) => {
+  const user = firebaseAuthorization.currentUser;
+
+  // Tweets
+  const [tweet, setTweet] = useState([]);
   const [tweets, setTweets] = useState([]);
+
+  // Change user's display name
   const [displayName, setDisplayName] = useState(
     userObj.displayName || userObj.email
   );
   const [newName, setNewName] = useState(userObj.displayName || userObj.email);
 
-  const getMyTweets = async () => {
-    await firebaseDB
+  // Change user's photo
+  const [profilePicture, setProfilePicture] = useState("");
+  const [profilePictureExists, setProfilePictureExists] = useState(false);
+
+  const getTweets = (async) => {
+    firebaseDB
       .collection("tweets")
       .orderBy("createdAt", "desc")
       .where("userId", "==", userObj.uid)
@@ -22,18 +32,48 @@ export default ({ userObj }) => {
           return { id: doc.id, ...doc.data() };
         });
         setTweets(tweetArray);
+        if (tweetArray[0].userImage) {
+          setProfilePicture(tweetArray[0].userImage);
+          setProfilePictureExists(true);
+        }
       });
   };
 
   useEffect(() => {
-    getMyTweets();
+    getTweets();
   }, []);
+
+  const onFileChange = (e) => {
+    const {
+      target: { files },
+    } = e;
+    const imageFile = files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(imageFile);
+    reader.onloadend = (finishedEvent) => {
+      const {
+        target: { result },
+      } = finishedEvent;
+      setProfilePicture(result);
+    };
+  };
+
+  const updatePhoto = (e) => {
+    e.preventDefault();
+    firebaseDB
+      .collection("tweets")
+      .doc(tweets[0].id)
+      .update({ userImage: profilePicture });
+    setProfilePictureExists(true);
+    setProfilePicture(tweet.userImage);
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
     if (userObj.displayName || userObj.email !== displayName) {
-      const user = firebaseAuthorization.currentUser;
-      await user.updateProfile({ displayName });
+      await user.updateProfile({
+        displayName,
+      });
       setNewName(user.displayName);
     }
   };
@@ -63,6 +103,40 @@ export default ({ userObj }) => {
       </div>
       <div className="profile-container">
         <h1>How are you doing today, {newName}?</h1>
+        {profilePictureExists ? (
+          <div className="profile-image">
+            <form onSubmit={updatePhoto}>
+              <label className="profile-picture-container">
+                <input
+                  id="profile-picture-input"
+                  type="file"
+                  accept="image/*"
+                  onChange={onFileChange}
+                />
+                <img
+                  className="profile-picture-container"
+                  src={profilePicture}
+                />
+              </label>
+              <button>Update profile picture</button>
+            </form>
+          </div>
+        ) : (
+          <div className="profile-image">
+            <form onSubmit={updatePhoto}>
+              <label className="profile-picture-container">
+                <input
+                  id="profile-picture-input"
+                  type="file"
+                  accept="image/*"
+                  onChange={onFileChange}
+                />
+                <h2>Add your profile picture</h2>
+              </label>
+              <button>Update profile picture</button>
+            </form>
+          </div>
+        )}
         <form onSubmit={onSubmit}>
           <input
             onChange={onChange}
