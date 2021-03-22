@@ -22,7 +22,7 @@ export default ({ userObj }) => {
   const [profilePicture, setProfilePicture] = useState("");
   const [profilePictureExists, setProfilePictureExists] = useState(false);
 
-  const getTweets = (async) => {
+  const getTweets = () => {
     firebaseDB
       .collection("tweets")
       .orderBy("createdAt", "desc")
@@ -32,8 +32,9 @@ export default ({ userObj }) => {
           return { id: doc.id, ...doc.data() };
         });
         setTweets(tweetArray);
-        if (tweetArray[0].userImage) {
-          setProfilePicture(tweetArray[0].userImage);
+        const tweetNumber = tweetArray.length - 1;
+        if (tweetArray[tweetNumber].userImage) {
+          setProfilePicture(tweetArray[tweetNumber].userImage);
           setProfilePictureExists(true);
         }
       });
@@ -55,17 +56,19 @@ export default ({ userObj }) => {
         target: { result },
       } = finishedEvent;
       setProfilePicture(result);
+      setProfilePictureExists(true);
     };
   };
 
   const updatePhoto = (e) => {
     e.preventDefault();
-    firebaseDB
-      .collection("tweets")
-      .doc(tweets[0].id)
-      .update({ userImage: profilePicture });
+    for (let i = 0; i < tweets.length; i++) {
+      firebaseDB
+        .collection("tweets")
+        .doc(tweets[i].id)
+        .update({ userImage: profilePicture });
+    }
     setProfilePictureExists(true);
-    setProfilePicture(tweet.userImage);
   };
 
   const onSubmit = async (e) => {
@@ -104,7 +107,7 @@ export default ({ userObj }) => {
       <div className="profile-container">
         <h1>How are you doing today, {newName}?</h1>
         {profilePictureExists ? (
-          <div className="profile-image">
+          <div className="image-container">
             <form onSubmit={updatePhoto}>
               <label className="profile-picture-container">
                 <input
@@ -113,16 +116,13 @@ export default ({ userObj }) => {
                   accept="image/*"
                   onChange={onFileChange}
                 />
-                <img
-                  className="profile-picture-container"
-                  src={profilePicture}
-                />
+                <img src={profilePicture} />
               </label>
               <button>Update profile picture</button>
             </form>
           </div>
         ) : (
-          <div className="profile-image">
+          <div className="image-container">
             <form onSubmit={updatePhoto}>
               <label className="profile-picture-container">
                 <input
