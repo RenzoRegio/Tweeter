@@ -7,12 +7,12 @@ export default () => {
       <div className="nav-buttons">
         <div>
           <NavLink exact className="nav-btn" to="/">
-            <i className="nav-icon fas fa-home"></i>
+            <i className="nav-icon fas fa-user-alt"></i>
           </NavLink>
         </div>
         <div>
-          <NavLink exact className="nav-btn" to="/profile">
-            <i className="nav-icon fas fa-user-alt"></i>
+          <NavLink exact className="nav-btn" to="/home">
+            <i className="nav-icon fas fa-home"></i>
           </NavLink>
         </div>
         <div>

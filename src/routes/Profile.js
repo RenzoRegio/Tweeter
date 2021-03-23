@@ -5,16 +5,14 @@ import { firebaseDB, firebaseAuthorization } from "../firebase";
 import Tweet from "../components/Tweet";
 import Main from "../components/Main-Nav";
 
-export default ({ userObj }) => {
+export default ({ userObj, getImage }) => {
   const user = firebaseAuthorization.currentUser;
-
   // Tweets
-  const [tweet, setTweet] = useState([]);
   const [tweets, setTweets] = useState([]);
 
   // Change user's display name
   const [displayName, setDisplayName] = useState(
-    userObj.displayName || userObj.email
+    userObj.email || userObj.displayName
   );
   const [newName, setNewName] = useState(userObj.displayName || userObj.email);
 
@@ -33,9 +31,12 @@ export default ({ userObj }) => {
         });
         setTweets(tweetArray);
         const tweetNumber = tweetArray.length - 1;
-        if (tweetArray[tweetNumber].userImage) {
-          setProfilePicture(tweetArray[tweetNumber].userImage);
-          setProfilePictureExists(true);
+        if (tweetArray.length > 0) {
+          if (tweetArray[tweetNumber].userImage) {
+            setProfilePicture(tweetArray[tweetNumber].userImage);
+            setProfilePictureExists(true);
+            getImage(tweetArray[tweetNumber].userImage);
+          }
         }
       });
   };
@@ -60,6 +61,7 @@ export default ({ userObj }) => {
     };
   };
 
+  const userImage = profilePicture;
   const updatePhoto = (e) => {
     e.preventDefault();
     for (let i = 0; i < tweets.length; i++) {

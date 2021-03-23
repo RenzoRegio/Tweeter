@@ -1,5 +1,10 @@
 import React from "react";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 
 // Routes
 import Auth from "../routes/Auth";
@@ -9,17 +14,21 @@ import Profile from "../routes/Profile";
 // Components
 import SignOut from "../routes/SignOut";
 
-export default ({ isLoggedIn, userObj }) => {
+export default ({ isLoggedIn, userObj, getImage, profilePhoto }) => {
   return (
     <Router>
       <Switch>
         {isLoggedIn ? (
           <>
             <Route exact path="/">
-              <Home userObj={userObj} />
+              <Profile userObj={userObj} getImage={getImage} />
             </Route>
-            <Route exact path="/profile">
-              <Profile userObj={userObj} />
+            <Route exact path="/home">
+              <Home
+                userObj={userObj}
+                profilePhoto={profilePhoto}
+                getImage={getImage}
+              />{" "}
             </Route>
             <Route exact path="/sign-out">
               <SignOut />

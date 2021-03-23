@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { firebaseDB, firebaseStorage } from "../firebase";
 
-export default ({ tweetObj, userObj, profile }) => {
+export default ({ tweetObj, userObj, profile, profilePhoto }) => {
   const [editing, setEditing] = useState(false);
   const [newTweet, setNewTweet] = useState(tweetObj.text);
 
@@ -41,6 +41,12 @@ export default ({ tweetObj, userObj, profile }) => {
 
   return (
     <>
+      {checkUser(tweetObj.userId) ? (
+        <img className="current-user" src={profilePhoto} />
+      ) : (
+        <div className="other-user">{userObj.displayName.charAt(0)}</div>
+      )}
+
       {profile ? (
         <div className="profile-tweet">
           {checkUser(tweetObj.userId) && !editing ? (

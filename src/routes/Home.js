@@ -5,7 +5,7 @@ import { firebaseDB } from "../firebase";
 import Tweet from "../components/Tweet";
 import Main from "../components/Main-Nav";
 
-const Home = ({ userObj }) => {
+const Home = ({ userObj, profilePhoto }) => {
   const [tweets, setTweets] = useState([]);
 
   useEffect(() => {
@@ -31,7 +31,12 @@ const Home = ({ userObj }) => {
       <Main userObj={userObj} />
       <div className="tweets-container">
         {tweets.map((tweet) => (
-          <Tweet key={tweet.id} tweetObj={tweet} userObj={userObj} />
+          <Tweet
+            key={tweet.id}
+            tweetObj={tweet}
+            userObj={userObj}
+            profilePhoto={profilePhoto}
+          />
         ))}
       </div>
     </div>

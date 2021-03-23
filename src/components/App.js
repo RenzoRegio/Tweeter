@@ -6,6 +6,7 @@ function App() {
   const [initizalize, setInitialize] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userObj, setUserObj] = useState(null);
+  const [profilePhoto, setProfilePhoto] = useState("");
 
   useEffect(() => {
     firebaseAuthorization.onAuthStateChanged((user) => {
@@ -19,10 +20,19 @@ function App() {
     });
   }, []);
 
+  const getImage = (x) => {
+    setProfilePhoto(x);
+  };
+
   return (
     <>
       {initizalize ? (
-        <Router isLoggedIn={isLoggedIn} userObj={userObj} />
+        <Router
+          isLoggedIn={isLoggedIn}
+          userObj={userObj}
+          getImage={getImage}
+          profilePhoto={profilePhoto}
+        />
       ) : (
         "Initializing..."
       )}
