@@ -36,6 +36,10 @@ function App() {
       ) : (
         "Initializing..."
       )}
+      <div className="overlay">
+        <i className="fab fa-twitter"></i>
+        <h1>YOUR SCREEN IS TOO small</h1>
+      </div>
     </>
   );
 }

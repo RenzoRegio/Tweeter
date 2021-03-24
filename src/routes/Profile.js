@@ -94,7 +94,7 @@ export default ({ userObj, getImage }) => {
     <div className="tweeter-profile">
       <div className="tweets-container">
         <h2>
-          You have {tweets.length} <i className="fab fa-twitter"></i>{" "}
+          You have {tweets.length} <i className="fab fa-twitter"></i>
           {tweets.length > 1 && "'s"}
         </h2>
         {tweets.map((tweet) => (
