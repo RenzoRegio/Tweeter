@@ -12,7 +12,7 @@ export default ({ userObj, getImage }) => {
 
   // Change user's display name
   const [displayName, setDisplayName] = useState(
-    userObj.email || userObj.displayName
+    userObj.displayName || userObj.email
   );
   const [newName, setNewName] = useState(userObj.displayName || userObj.email);
 
@@ -103,6 +103,7 @@ export default ({ userObj, getImage }) => {
             tweetObj={tweet}
             userObj={userObj}
             profile={true}
+            profilePhoto={profilePicture}
           />
         ))}
       </div>

@@ -44,7 +44,7 @@ export default ({ tweetObj, userObj, profile, profilePhoto }) => {
       {checkUser(tweetObj.userId) ? (
         <img className="current-user" src={profilePhoto} />
       ) : (
-        <div className="other-user">{userObj.displayName.charAt(0)}</div>
+        <div className="other-user">{tweetObj.userName.charAt(0)}</div>
       )}
 
       {profile ? (

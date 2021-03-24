@@ -425,19 +425,7 @@ nav {
   color: white;
 }
 
-.active {
-  height: 50px;
-  border-radius: 20px;
-  background-image: linear-gradient(-45deg, #4c9be5, #f5f8fa);
-  background-size: 200% 200%;
-  animation: gradientEffect 3s linear infinite;
-  border: 1px solid black;
-  box-shadow: 1px 3px, 1px 4px black, 1px 5px black;
-}
-
 .active > .nav-icon {
-  color: black;
-  background-color: white;
   box-shadow: 0px 1px white, 0px 2px black, 0px 3px black;
 }
 
@@ -577,7 +565,7 @@ nav {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 200px;
+  margin-bottom: 300px;
   width: 25%;
   border-radius: 20px;
   padding: 50px;
@@ -773,12 +761,20 @@ nav {
     margin-left: 200px;
   }
 
+  .nav-bar {
+    width: 320px;
+  }
+
   .nav-icon {
     margin: 5px;
   }
 
   nav {
     margin-left: 5px;
+  }
+
+  .tweeter-home > i {
+    font-size: 60px;
   }
 }
 
@@ -813,9 +809,11 @@ nav {
 
 .overlay > h1 {
   text-align: center;
+  width: 80%;
 }
 .overlay > i {
   font-size: 150px;
+  animation: iconOpacity 2s linear infinite;
 }
 
 @media screen and (min-width: 370px) {
