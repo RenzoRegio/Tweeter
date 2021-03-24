@@ -39,6 +39,9 @@ const Home = ({ userObj, profilePhoto }) => {
           />
         ))}
       </div>
+      <div className="splash-screen">
+        <i className="fab fa-twitter">Clone</i>
+      </div>
     </div>
   );
 };

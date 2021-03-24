@@ -153,6 +153,9 @@ export default ({ userObj, getImage }) => {
         </form>
       </div>
       <Main userObj={userObj} />
+      <div className="splash-screen">
+        <i className="fab fa-twitter">Clone</i>
+      </div>
     </div>
   );
 };
