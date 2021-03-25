@@ -213,6 +213,7 @@ button:hover {
 
 .tweet-form > input[type="text"]:focus {
   width: 60%;
+  box-shadow: 1px 2px 4px;
 }
 
 .tweet-form > input[type="text"]::placeholder {
@@ -259,8 +260,8 @@ button:hover {
 }
 
 .tweet-form-image {
-  height: 120px;
-  width: 120px;
+  height: 80px;
+  width: 80px;
   border-radius: 50%;
   border: 2px solid black;
   box-shadow: 1px 3px white, 1px 4px black, 1px 5px black, 1px 6px 1px black;
@@ -268,7 +269,7 @@ button:hover {
 
 .image-tweet-container {
   position: absolute;
-  top: -90px;
+  top: -70px;
   left: -70px;
 }
 
@@ -706,6 +707,61 @@ nav {
   border-radius: 50%;
 }
 
+/* OVERLAY & SPLASH SCREEN */
+.overlay {
+  width: 300vw;
+  height: 300vh;
+  position: absolute;
+  top: 0;
+  background-color: #4c9be5;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: 900;
+  font-size: 40px;
+  letter-spacing: 10px;
+}
+
+.overlay > h1 {
+  text-align: center;
+  width: 80%;
+}
+.overlay > i {
+  font-size: 150px;
+  animation: iconOpacity 2s linear infinite;
+}
+
+.splash-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #4c9be5;
+  color: white;
+  z-index: 2;
+  font-size: 100px;
+  animation: start-splash-screen 4s ease-in-out forwards;
+}
+
+@keyframes start-splash-screen {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(2);
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 /* MEDIA SCREEN */
 
 @media screen and (max-width: 1360px) {
@@ -719,11 +775,15 @@ nav {
 }
 
 @media screen and (max-width: 1037px) {
-  .tweet,
-  .my-tweet {
+  .tweet {
     width: 250px;
     height: 100px;
     font-size: 12px;
+  }
+
+  .my-tweet {
+    width: 250px;
+    height: 150px;
   }
 
   .tweeter-profile > .profile-container > form {
@@ -731,20 +791,31 @@ nav {
   }
 }
 
-@media screen and (max-width: 750px) {
-  .tweet,
-  .my-tweet {
-    width: 180px;
-    height: 100px;
+@media screen and (max-width: 800px) {
+  .update-form > form > input[type="text"] {
+    border-radius: 20px;
+    padding: 5px;
+    width: 100px;
   }
+}
 
+@media screen and (max-width: 750px) {
   .tweeter-profile > .profile-container {
     margin-bottom: 300px;
     width: 60%;
   }
 
+  .tweet,
+  .my-tweet {
+    width: 150px;
+    height: auto;
+  }
   .tweeter-profile > .tweets-container {
     display: none;
+  }
+
+  .splash-screen > i {
+    font-size: 50px;
   }
 }
 
@@ -777,31 +848,17 @@ nav {
   .tweeter-home > i {
     font-size: 60px;
   }
-}
 
-.overlay {
-  width: 300vw;
-  height: 300vh;
-  position: absolute;
-  top: 0;
-  background-color: #4c9be5;
-  z-index: 10;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-weight: 900;
-  font-size: 40px;
-  letter-spacing: 10px;
-}
+  .tweet-form-image {
+    height: 70px;
+    width: 70px;
+  }
 
-.overlay > h1 {
-  text-align: center;
-  width: 80%;
-}
-.overlay > i {
-  font-size: 150px;
-  animation: iconOpacity 2s linear infinite;
+  .image-tweet-container {
+    position: absolute;
+    top: -60px;
+    left: -60px;
+  }
 }
 
 @media screen and (min-width: 370px) {
@@ -813,34 +870,5 @@ nav {
 @media screen and (max-width: 370px) {
   .nav-bar {
     display: none;
-  }
-}
-
-.splash-screen {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  height: 100vh;
-  width: 100vw;
-  background-color: #4c9be5;
-  color: white;
-  z-index: 2;
-  font-size: 100px;
-  animation: start-splash-screen 4s ease-in-out forwards;
-}
-
-@keyframes start-splash-screen {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 1;
-    transform: scale(2);
-  }
-  100% {
-    opacity: 0;
-    visibility: hidden;
   }
 }
