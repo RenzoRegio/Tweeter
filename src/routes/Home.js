@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { firebaseDB } from "../firebase";
 
 // Components
@@ -7,7 +8,11 @@ import Main from "../components/Main-Nav";
 
 const Home = ({ userObj, profilePhoto }) => {
   const [tweets, setTweets] = useState([]);
+  const history = useHistory();
 
+  if (performance.navigation.type == 1) {
+    history.push("/");
+  }
   useEffect(() => {
     const unsubscribe = firebaseDB
       .collection("tweets")
