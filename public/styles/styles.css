@@ -789,13 +789,20 @@ nav {
   .tweeter-profile > .profile-container > form {
     display: flex;
   }
-}
 
-@media screen and (max-width: 800px) {
+  .update-form > form {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .update-form > form > input[type="text"] {
-    border-radius: 20px;
-    padding: 5px;
-    width: 100px;
+    margin-top: 40px;
+  }
+
+  .update-form > form > .update-btn {
+    bottom: 30px;
+    left: 62px;
   }
 }
 
@@ -816,6 +823,27 @@ nav {
 
   .splash-screen > i {
     font-size: 50px;
+  }
+
+  .update-form > form {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .update-form > form > input[type="text"] {
+    margin-top: 30px;
+    width: 70%;
+  }
+
+  .update-form > form > .update-btn {
+    bottom: 30px;
+    left: 45px;
+  }
+
+  .cancel-btn {
+    position: relative;
+    bottom: 15px;
   }
 }
 
