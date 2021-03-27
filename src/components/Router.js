@@ -21,7 +21,7 @@ export default ({ isLoggedIn, userObj, getImage, profilePhoto }) => {
         {isLoggedIn ? (
           <>
             <Route exact path="/">
-              <Profile getImage={getImage} />
+              <Profile userObj={userObj} getImage={getImage} />
             </Route>
             <Route exact path="/home">
               <Home

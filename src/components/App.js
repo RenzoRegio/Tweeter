@@ -9,7 +9,7 @@ function App() {
   const [profilePhoto, setProfilePhoto] = useState("");
 
   useEffect(() => {
-    firebaseAuthorization.onAuthStateChanged((user) => {
+    const unsubscribe = firebaseAuthorization.onAuthStateChanged((user) => {
       if (user) {
         setIsLoggedIn(true);
         setUserObj(user);
@@ -18,6 +18,9 @@ function App() {
       }
       setInitialize(true);
     });
+    return function cleanup() {
+      unsubscribe();
+    };
   }, []);
 
   const getImage = (x) => {

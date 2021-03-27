@@ -5,8 +5,9 @@ import { firebaseDB, firebaseAuthorization } from "../firebase";
 import Tweet from "../components/Tweet";
 import Main from "../components/Main-Nav";
 
-export default ({ getImage }) => {
+export default ({ userObj, getImage }) => {
   const user = firebaseAuthorization.currentUser;
+
   // Tweets
   const [tweets, setTweets] = useState([]);
 
@@ -97,7 +98,7 @@ export default ({ getImage }) => {
           <Tweet
             key={tweet.id}
             tweetObj={tweet}
-            userObj={user}
+            userObj={userObj}
             profile={true}
             profilePhoto={profilePicture}
           />
