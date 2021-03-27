@@ -775,6 +775,13 @@ nav {
 }
 
 @media screen and (max-width: 1037px) {
+  .auth-form-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
   .tweet {
     width: 250px;
     height: 100px;
@@ -803,6 +810,16 @@ nav {
   .update-form > form > .update-btn {
     bottom: 30px;
     left: 62px;
+  }
+
+  .tweet-image {
+    height: 70px;
+    width: 70px;
+    margin-bottom: 10px;
+  }
+
+  .my-tweet > span {
+    bottom: 30px;
   }
 }
 
@@ -844,6 +861,13 @@ nav {
   .cancel-btn {
     position: relative;
     bottom: 15px;
+  }
+
+  .tweet-image {
+    height: 50px;
+    width: 50px;
+    margin-bottom: 10px;
+    margin-right: 10px;
   }
 }
 

@@ -13,6 +13,7 @@ const Home = ({ userObj, profilePhoto }) => {
   if (performance.navigation.type == 1) {
     history.push("/");
   }
+
   useEffect(() => {
     const unsubscribe = firebaseDB
       .collection("tweets")
