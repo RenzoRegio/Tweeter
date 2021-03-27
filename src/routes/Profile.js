@@ -5,26 +5,22 @@ import { firebaseDB, firebaseAuthorization } from "../firebase";
 import Tweet from "../components/Tweet";
 import Main from "../components/Main-Nav";
 
-export default ({ userObj, getImage }) => {
+export default ({ getImage }) => {
   const user = firebaseAuthorization.currentUser;
   // Tweets
   const [tweets, setTweets] = useState([]);
 
   // Change user's display name
-  const [displayName, setDisplayName] = useState(
-    userObj.displayName || userObj.email
-  );
-  const [newName, setNewName] = useState(userObj.displayName || userObj.email);
+  const [displayName, setDisplayName] = useState("");
 
   // Change user's photo
   const [profilePicture, setProfilePicture] = useState("");
   const [profilePictureExists, setProfilePictureExists] = useState(false);
-
   const getTweets = () => {
     firebaseDB
       .collection("tweets")
       .orderBy("createdAt", "desc")
-      .where("userId", "==", userObj.uid)
+      .where("userId", "==", user.uid)
       .onSnapshot((snapshot) => {
         const tweetArray = snapshot.docs.map((doc) => {
           return { id: doc.id, ...doc.data() };
@@ -43,6 +39,7 @@ export default ({ userObj, getImage }) => {
 
   useEffect(() => {
     getTweets();
+    setDisplayName(user.displayName || user.email);
   }, []);
 
   const onFileChange = (e) => {
@@ -61,7 +58,6 @@ export default ({ userObj, getImage }) => {
     };
   };
 
-  const userImage = profilePicture;
   const updatePhoto = (e) => {
     e.preventDefault();
     for (let i = 0; i < tweets.length; i++) {
@@ -75,11 +71,11 @@ export default ({ userObj, getImage }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (userObj.displayName || userObj.email !== displayName) {
+    if (user.displayName || user.email !== displayName) {
       await user.updateProfile({
         displayName,
       });
-      setNewName(user.displayName);
+      setDisplayName(user.displayName);
     }
   };
 
@@ -101,14 +97,14 @@ export default ({ userObj, getImage }) => {
           <Tweet
             key={tweet.id}
             tweetObj={tweet}
-            userObj={userObj}
+            userObj={user}
             profile={true}
             profilePhoto={profilePicture}
           />
         ))}
       </div>
       <div className="profile-container">
-        <h1>How are you doing today, {newName}?</h1>
+        <h1>How are you doing today, {displayName}?</h1>
         {profilePictureExists ? (
           <div className="image-container">
             <form onSubmit={updatePhoto}>
@@ -152,7 +148,7 @@ export default ({ userObj, getImage }) => {
           </button>
         </form>
       </div>
-      <Main userObj={userObj} />
+      <Main userObj={user} />
       <div className="splash-screen">
         <i className="fab fa-twitter">Clone</i>
       </div>
