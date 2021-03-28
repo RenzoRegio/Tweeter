@@ -35,7 +35,7 @@ const Home = ({ userObj, profilePhoto }) => {
 
   return (
     <div className="tweeter-home">
-      <i className="twitter-icon-large fab fa-twitter">#Tweeter</i>
+      <i className="twitter-icon-large fab fa-twitter">#TweeterClone</i>
       <Main userObj={user} />
       <div className="tweets-container">
         {tweets.map((tweet) => (
