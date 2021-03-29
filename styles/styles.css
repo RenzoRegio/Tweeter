@@ -1,0 +1,926 @@
+body {
+  background-color: whitesmoke;
+  color: white;
+}
+
+button,
+input[type="text"] {
+  outline: none;
+}
+
+button:hover,
+.button {
+  cursor: pointer;
+}
+
+button:hover {
+  animation: buttonDown 0.2s linear forwards;
+}
+
+/* AUTH FORM */
+.twitter-icon-large {
+  font-size: 100px;
+  margin-bottom: 40px;
+  background: whitesmoke;
+  text-shadow: 0 1px 0 #4c9be5;
+}
+
+.auth-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.auth-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  height: 300px;
+  border-radius: 20px;
+  padding: 20px;
+  color: black;
+}
+
+.auth-form > header {
+  display: flex;
+  align-items: center;
+}
+
+.auth-form > header > i:first-child {
+  font-size: 70px;
+  color: #4c9be5;
+  margin-right: 5px;
+  margin-bottom: 20px;
+  animation: iconOpacity 3s linear infinite;
+}
+
+@keyframes iconOpacity {
+  0% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
+
+.auth-form > header > span {
+  font-weight: 700;
+  font-size: 25px;
+}
+
+.auth-form > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form > form > input {
+  margin: 10px;
+  border-radius: 30px;
+  border: 2px solid black;
+  padding: 10px;
+  outline: none;
+  font-size: 20px;
+}
+
+.button {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.button:hover {
+  color: #4c9be5;
+}
+
+.auth-form > form > input[type="submit"] {
+  background-color: #4c9be5;
+  color: white;
+  font-weight: 800;
+}
+
+.auth-form-buttons > button {
+  border-radius: 20px;
+  margin: 10px;
+  margin-top: 40px;
+  border: 2px solid black;
+  padding: 10px;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.auth-form-buttons > button:first-child {
+  color: white;
+  background-image: linear-gradient(
+    -120deg,
+    #4285f4,
+    #34a853,
+    #fbbc05,
+    #ea4335
+  );
+  background-size: 400% 400%;
+  animation: gradientEffect 5s linear infinite;
+  box-shadow: 0px 2px;
+}
+
+.auth-form-buttons > button:nth-child(2) {
+  color: white;
+  background: linear-gradient(
+    45deg,
+    #4078c0,
+    #6e5494,
+    #bd2c00,
+    #c9510c,
+    #6cc644,
+    #fafafa
+  );
+  background-size: 400% 400%;
+  animation: gradientEffect 5s linear infinite;
+  box-shadow: 0px 2px;
+}
+
+.auth-form-buttons > button > i {
+  margin-left: 5px;
+}
+
+.auth-form > span.button ~ span {
+  color: red;
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+@keyframes gradientEffect {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* TWEET FORM */
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+  width: 30%;
+  border: 4px solid black;
+  box-shadow: 5px 4px, 4px 5px white, 4px 6px black, 4px 7px black,
+    4px 8px black, 10px 10px black;
+  z-index: 2;
+}
+
+.add-image-tweet {
+  display: none;
+}
+
+.tweet-form {
+  display: flex;
+  justify-content: center;
+}
+
+.tweet-form > input[type="text"] {
+  padding: 20px;
+  border-radius: 25px;
+  border: 3px solid black;
+  background-color: white;
+  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black, 1px 6px black;
+  transition: width 0.7s ease-in-out;
+  width: 50%;
+  position: absolute;
+  bottom: 100px;
+  display: flex;
+  margin-left: 300px;
+  margin-bottom: 20px;
+  margin-top: 100px;
+}
+
+.tweet-form > input[type="text"]:focus {
+  width: 60%;
+  box-shadow: 1px 2px 4px;
+}
+
+.tweet-form > input[type="text"]::placeholder {
+  padding-left: 10px;
+}
+
+.tweet-form > button {
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  background-color: #4c9be5;
+  border: 1px solid black;
+  color: white;
+  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black;
+}
+
+.tweet-form > button > i {
+  font-size: 22px;
+  animation: iconOpacity 2s linear infinite;
+}
+
+@keyframes buttonDown {
+  from {
+    transform: none;
+  }
+  to {
+    box-shadow: 0px 1px white, 0px 2px black, 0px 3px black;
+  }
+}
+
+/* UPLOAD IMAGE STYLES */
+
+.upload-photo {
+  color: black;
+  border: 1px solid black;
+  font-size: 23px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 50%;
+  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black;
+  margin-right: 10px;
+}
+
+.tweet-form-image {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  border: 2px solid black;
+  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black, 1px 6px 1px black;
+}
+
+.image-tweet-container {
+  position: absolute;
+  top: -70px;
+  left: -70px;
+}
+
+.image-tweet-container > button {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+  font-size: 20px;
+  right: -10px;
+  border: 1px solid black;
+  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black, 1px 6px 1px black;
+}
+
+/* TWEETS */
+
+.tweeter-home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+.tweets-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 300px;
+  width: 35%;
+  border-radius: 20px;
+  padding: 50px;
+  border: 4px solid black;
+  box-shadow: 5px 4px, 4px 5px white, 4px 6px black, 4px 7px black,
+    4px 8px black, 10px 10px black;
+  background-color: white;
+}
+.tweets-container > h3 {
+  color: black;
+  font-size: 50px;
+}
+
+.tweet {
+  margin-top: 20px;
+  width: 320px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 5px 4px, 4px 5px white, 4px 6px black, 4px 7px black,
+    4px 8px black, 7px 7px black;
+  border: 3px solid black;
+  border-top-left-radius: 0px;
+  margin-right: 65px;
+  height: auto;
+}
+
+.my-tweet {
+  margin-top: 20px;
+  width: 320px;
+  height: auto;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 5px 4px, 4px 5px white, 4px 6px black, 4px 7px black,
+    4px 8px black, 7px 7px black;
+  border: 3px solid black;
+  border-top-right-radius: 0px;
+  margin-left: 65px;
+}
+
+.tweet-contents {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.tweet > div > h2,
+.my-tweet > div > h2,
+.profile-tweet > div > h2 {
+  padding: 15px;
+  color: black;
+  word-wrap: break-word;
+}
+
+.tweet:hover,
+.my-tweet:hover,
+.profile-tweet:hover {
+  transform: scale(1.1);
+}
+
+.tweet-with-photo {
+  width: 50%;
+}
+
+.tweet > span,
+.my-tweet > span,
+.profile-tweet > span {
+  color: rgba(128, 128, 128, 0.596);
+  position: relative;
+  left: 20px;
+  bottom: 20px;
+}
+
+.tweet-image {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: 2px solid black;
+  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black, 1px 6px 1px black;
+  transition: transform 0.5s ease-in-out, border-radius 0.5s ease-in-out;
+}
+
+.tweet-image:hover {
+  transform: scale(1.2);
+  border-radius: 20%;
+}
+
+.edit-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+  margin-right: 10px;
+  color: black;
+  font-size: 20px;
+}
+
+.edit-buttons > i {
+  margin-right: 5px;
+  transition: transform 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+.edit-buttons > i:hover {
+  transform: scale(1.5);
+  cursor: pointer;
+}
+
+.edit-buttons > i:first-child:hover {
+  color: red;
+}
+
+.edit-buttons > i:nth-child(2):hover {
+  color: #4c9be5;
+}
+
+/* NAV STYLE */
+
+nav {
+  display: flex;
+  justify-content: center;
+  margin-left: 30px;
+}
+
+.nav-btn {
+  font-size: 23px;
+  color: white;
+}
+
+.active > .nav-icon {
+  box-shadow: 0px 1px white, 0px 2px black, 0px 3px black;
+}
+
+.nav-icon {
+  padding: 15px;
+  border-radius: 50%;
+  color: black;
+  border: 1px solid black;
+  margin: 15px;
+  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  width: 30%;
+}
+
+/* NAV BUTTONS HOVER STYLE */
+
+.nav-icon:hover,
+.tweet-form > button:hover,
+.upload-photo:hover,
+.image-tweet-container > button:hover {
+  cursor: pointer;
+  animation: buttonDown 0.2s linear forwards;
+}
+
+/* UPDATE TWEET FORM */
+.update-form {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.update-form > form {
+  display: flex;
+  align-items: center;
+}
+.update-form > form > input[type="text"] {
+  border-radius: 20px;
+  padding: 10px;
+  border: 2px solid black;
+}
+
+.update-btn {
+  position: relative;
+  right: 40px;
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+}
+
+.update-btn > i {
+  font-size: 20px;
+  color: #4c9be5;
+}
+
+.cancel-btn {
+  padding: 8px;
+  background-color: red;
+  color: white;
+  border-radius: 30px;
+  border: 2px solid white;
+  font-weight: 700;
+}
+
+/* SIGN OUT */
+
+.sign-out-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-out {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  padding: 25px;
+  height: 300px;
+  width: 450px;
+  flex-direction: column;
+  box-shadow: 3px 4px, 4px 5px white, 4px 6px black, 4px 7px black,
+    4px 8px black, 10px 10px 4px black;
+}
+.sign-out > h1 {
+  color: black;
+  letter-spacing: 5px;
+}
+
+.sign-out > div {
+  margin-top: 15px;
+}
+
+.sign-out > div > button {
+  padding: 15px;
+  border-radius: 20px;
+  border: 2px solid black;
+  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black, 1px 6px 1px black;
+  font-weight: 800;
+  margin: 10px;
+  font-size: 18px;
+}
+.sign-out > div > button > i {
+  margin-left: 5px;
+}
+
+.sign-out > div > button:hover {
+  color: white;
+}
+
+.sign-out > div > button:first-child:hover {
+  background-color: #f83759;
+  animation: buttonDown 0.1s linear forwards;
+}
+
+.sign-out > div > button:nth-child(2):hover {
+  background-color: #4c9be5;
+  animation: buttonDown 0.1s linear forwards;
+}
+
+/* PROFILE STYLES */
+
+.tweeter-profile {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 300px;
+  width: 25%;
+  border-radius: 20px;
+  padding: 50px;
+  border: 4px solid black;
+  box-shadow: 5px 4px, 4px 5px white, 4px 6px black, 4px 7px black,
+    4px 8px black, 10px 10px black;
+  background-color: white;
+}
+
+.profile-container > h1 {
+  color: black;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.profile-container > h2 {
+  margin-top: 40px;
+  color: black;
+  text-align: center;
+}
+.tweets-container > h2 {
+  color: black;
+  opacity: 50%;
+}
+
+.profile-container > h2 > i {
+  margin-left: 5px;
+}
+
+.profile-tweet {
+  margin-top: 20px;
+  width: 320px;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 5px 4px, 4px 5px white, 4px 6px black, 4px 7px black,
+    4px 8px black, 7px 7px black;
+  border: 3px solid black;
+  border-top-right-radius: 0px;
+}
+
+.profile-container > form > input {
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid black;
+  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black;
+}
+
+.profile-container > form > button {
+  margin-left: 20px;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  font-size: 20px;
+  border: 1px solid black;
+  background-color: white;
+  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black, 1px 6px 1px black;
+}
+
+.profile-container > form > button:hover {
+  background-color: black;
+  color: white;
+  animation: buttonDown 0.2s linear forwards;
+}
+
+.image-container {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  border: 2px solid black;
+  margin-bottom: 100px;
+  box-shadow: 2px 3px black, 2px 4px black, 2px 5px black, 2px 6px black;
+}
+
+.image-container > form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.image-container > form > button {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 30px;
+  border: 2px solid black;
+  font-size: 15px;
+  background-color: white;
+  box-shadow: 1px 3px white, 1px 4px black, 1px 5px black, 1px 6px 1px black;
+}
+
+#profile-picture-input {
+  display: none;
+}
+.profile-picture-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  color: black;
+}
+
+.profile-picture-container > h2 {
+  text-align: center;
+  font-size: 15px;
+}
+
+.profile-picture-container > img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+/*TWEET IMAGE*/
+
+.other-user {
+  position: relative;
+  right: 220px;
+  top: 20px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: teal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+}
+
+.current-user {
+  position: relative;
+  left: 220px;
+  top: 20px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+/* OVERLAY & SPLASH SCREEN */
+.overlay {
+  width: 300vw;
+  height: 300vh;
+  position: absolute;
+  top: 0;
+  background-color: #4c9be5;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: 900;
+  font-size: 40px;
+  letter-spacing: 10px;
+}
+
+.overlay > h1 {
+  text-align: center;
+  width: 80%;
+}
+.overlay > i {
+  font-size: 150px;
+  animation: iconOpacity 2s linear infinite;
+}
+
+.splash-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #4c9be5;
+  color: white;
+  z-index: 2;
+  font-size: 100px;
+  animation: start-splash-screen 4s ease-in-out forwards;
+}
+
+@keyframes start-splash-screen {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(2);
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* MEDIA SCREEN */
+
+@media screen and (max-width: 1360px) {
+  .current-user,
+  .other-user {
+    display: none;
+  }
+  .nav-bar {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 1037px) {
+  .auth-form-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .tweet {
+    width: 250px;
+    height: 100px;
+    font-size: 12px;
+  }
+
+  .my-tweet {
+    width: 250px;
+    height: 150px;
+  }
+
+  .tweeter-profile > .profile-container > form {
+    display: flex;
+  }
+
+  .update-form > form {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .update-form > form > input[type="text"] {
+    margin-top: 40px;
+  }
+
+  .update-form > form > .update-btn {
+    bottom: 30px;
+    left: 62px;
+  }
+
+  .tweet-image {
+    height: 70px;
+    width: 70px;
+    margin-bottom: 10px;
+  }
+
+  .my-tweet > span {
+    bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .tweeter-profile > .profile-container {
+    margin-bottom: 300px;
+    width: 60%;
+  }
+
+  .tweet,
+  .my-tweet {
+    width: 150px;
+    height: auto;
+  }
+  .tweeter-profile > .tweets-container {
+    display: none;
+  }
+
+  .splash-screen > i {
+    font-size: 50px;
+  }
+
+  .update-form > form {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .update-form > form > input[type="text"] {
+    margin-top: 30px;
+    width: 70%;
+  }
+
+  .update-form > form > .update-btn {
+    bottom: 30px;
+    left: 45px;
+  }
+
+  .cancel-btn {
+    position: relative;
+    bottom: 15px;
+  }
+
+  .tweet-image {
+    height: 50px;
+    width: 50px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 515px) {
+  .tweet,
+  .my-tweet {
+    width: 150px;
+    height: auto;
+  }
+  .nav-bar {
+    width: 300px;
+  }
+
+  .tweet-form > input[type="text"] {
+    margin-left: 200px;
+  }
+
+  .nav-bar {
+    width: 320px;
+  }
+
+  .nav-icon {
+    margin: 5px;
+  }
+
+  nav {
+    margin-left: 5px;
+  }
+
+  .tweeter-home > i {
+    font-size: 60px;
+  }
+
+  .tweet-form-image {
+    height: 70px;
+    width: 70px;
+  }
+
+  .image-tweet-container {
+    position: absolute;
+    top: -60px;
+    left: -60px;
+  }
+}
+
+@media screen and (min-width: 370px) {
+  .overlay {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .nav-bar {
+    display: none;
+  }
+}
